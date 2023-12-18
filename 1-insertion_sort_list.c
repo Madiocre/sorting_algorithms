@@ -34,13 +34,13 @@ void insertion_sort_list(listint_t **list){
 
     if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
-    
-    for (current = (*list)->next; current != NULL; current = next) {
+    current = (*list)->next;
+    while (current != NULL) {
         next = current->next;
         prev = current->prev;
         while(prev != NULL && current->n < prev->n)
             sortedInsert(list, &prev, current);
         print_list((const listint_t *)*list);
-        
+        current = next;
     }
 }
