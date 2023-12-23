@@ -1,5 +1,4 @@
 #include "sort.h"
-
 /**
  * partition - marks the pivot
  *
@@ -9,7 +8,6 @@
  *
  * Return: pivot
  */
-
 int partition(int *array, int low, int high)
 {
 	int pivot = array[high];
@@ -25,33 +23,30 @@ int partition(int *array, int low, int high)
 			array[j] = temp1;
 		}
 	}
-
 	temp2 = array[i + 1];
 	array[i + 1] = array[high];
 	array[high] = temp2;
-
 	return (i + 1);
 }
-
 /**
  * quick_sort_sec - sorts using quick
  *
  * @array: array to be sorted
  * @pivot: current size of array
  * @org_size: original array size
+ * @org_array: original array
  */
-
 void quick_sort_sec(int *array, size_t pivot, int *org_array, size_t org_size)
 {
-        int pivotIndex;
+	int pivotIndex;
 
-        if (pivot == 0 || pivot == 1)
-                return;
-
-        pivotIndex = partition(array, 0, pivot - 1);
+	if (pivot == 0 || pivot == 1)
+	return;
+	pivotIndex = partition(array, 0, pivot - 1);
 	print_array(org_array, org_size);
-        quick_sort_sec(array, pivotIndex, org_array, org_size);
-        quick_sort_sec(array + pivotIndex + 1, pivot - pivotIndex - 1, org_array, org_size);
+	quick_sort_sec(array, pivotIndex, org_array, org_size);
+	quick_sort_sec(array + pivotIndex + 1, pivot - pivotIndex - 1,
+org_array, org_size);
 }
 
 /**
@@ -67,7 +62,6 @@ void quick_sort(int *array, size_t size)
 
 	if (size == 0 || size == 1)
 		return;
-
 	pivotIndex = partition(array, 0, size - 1);
 	print_array(array, size);
 	quick_sort_sec(array, pivotIndex, array, size);
