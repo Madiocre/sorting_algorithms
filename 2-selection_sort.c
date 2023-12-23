@@ -24,33 +24,35 @@ void swap_ints(int *a, int *b)
 void selection_sort(int *array, size_t size)
 {
 	size_t i, j;
-    int temp = 0;
+	int temp = 0;
 	bool check = false;
 
 	if (array == NULL || size < 2)
 		return;
-    for (i = 0; i < size; i++)
-    {
-        check = true;
-        temp = 0;
-        for (j = i + 1; j < size; j++){
-            if (array[i] > array[j] && check == true)
-            {
-                temp = array[j];
-                swap_ints(array + i, array + j);
-                check = false;
-            }
-            else if (temp > array[j])
-            {
-                swap_ints(&temp, array + j);
-                check = false;
-            }
-        }
-        if (check == false && i != size-1){
-            array[i] = temp;
-            print_array(array, size);
-        }else{
-            return;
-        }
-    }
+	for (i = 0; i < size; i++)
+	{
+		check = true;
+		temp = 0;
+		for (j = i + 1; j < size; j++)
+		{
+			if (array[i] > array[j] && check == true)
+			{
+				temp = array[j];
+				swap_ints(array + i, array + j);
+				check = false;
+			}
+			else if (temp > array[j])
+			{
+				swap_ints(&temp, array + j);
+				check = false;
+			}
+		}
+		if (check == false && i != size - 1)
+		{
+			array[i] = temp;
+			print_array(array, size);
+		}
+		else
+			return;
+	}
 }
